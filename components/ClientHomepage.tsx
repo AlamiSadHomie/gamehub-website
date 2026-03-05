@@ -57,13 +57,15 @@ export default function ClientHomepage({ articles }: ClientHomepageProps) {
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition ${
+                  aria-label={cat.id === 'all' ? 'Home' : cat.name}
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition flex items-center justify-center gap-2 ${
                     selectedCategory === cat.id
                       ? 'bg-purple-600 text-white'
                       : 'text-gray-300 hover:bg-gray-700'
                   }`}
                 >
-                  {cat.name}
+                  {cat.id === 'all' ? <Home size={18} aria-hidden /> : cat.name}
+                  {cat.id === 'all' && <span className="sr-only">Home</span>}
                 </button>
               ))}
             </nav>
@@ -92,13 +94,15 @@ export default function ClientHomepage({ articles }: ClientHomepageProps) {
                     setSelectedCategory(cat.id);
                     setIsMenuOpen(false);
                   }}
-                  className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition ${
+                  aria-label={cat.id === 'all' ? 'Home' : cat.name}
+                  className={`w-full text-left px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-2 ${
                     selectedCategory === cat.id
                       ? 'bg-purple-600 text-white'
                       : 'text-gray-300 hover:bg-gray-700'
                   }`}
                 >
-                  {cat.name}
+                  {cat.id === 'all' ? <Home size={18} aria-hidden /> : cat.name}
+                  {cat.id === 'all' && <span className="sr-only">Home</span>}
                 </button>
               ))}
             </div>
